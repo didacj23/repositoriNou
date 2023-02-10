@@ -24,15 +24,24 @@ namespace botiga_cistella
             double[] preusProductes = new double[10];
             preusProductes[0] = 20.00;
             preusProductes[1] = 25.00;
+            preusProductes[2] = 30.00;
 
             //variables i taules de botiga
 
             //variables i taules de cistella
 
             string[] productesCistella = new string[10];
-            int[] quantitat = new int[10];
+            productesCistella[0] = "camiseta";
+            productesCistella[1] = "sudadera";
+            productesCistella[2] = "pantalo";
 
-            int nElemCistella = 10;
+            int[] quantitat = new int[10];
+            quantitat[0] = 2;
+            quantitat[1] = 1;
+            quantitat[2] = 3;
+
+
+            int nElemCistella = 3;
             double diners = 20.00;
 
             //variables i taules de cistella
@@ -42,9 +51,14 @@ namespace botiga_cistella
             //tenim suficient diners.
 
 
-            comprar(productesBotiga,ref quantitat, nElemCistella, ref diners, preusProductes, producte, nElemBotiga, ref pTrobat, ref posicioProdute, ref preuFinal, ref productesCistella);
 
 
+            ordenarCistella(ref productesCistella, ref quantitat, nElemCistella);
+
+            for(int i = 0;i < nElemCistella; i++)
+            {
+                Console.WriteLine(productesCistella[i] + " ");
+            }
 
 
         }
@@ -169,6 +183,36 @@ namespace botiga_cistella
 
 
 
+        }
+
+        static void ordenarCistella(ref string[] productesCistella, ref int[] quantitat, int nElemCistella)
+        {
+            bool canvis = true;
+
+            for (int nVolta = 0; nVolta < nElemCistella - 1 && canvis; nVolta++)
+            {
+                canvis = false;
+
+                for(int i = 0; i < nElemCistella - 1- nVolta; i++)
+                {
+                    if (productesCistella[i].CompareTo(productesCistella[i + 1]) > 0)
+                    {
+                        string temp = productesCistella[i];
+                        productesCistella[i] = productesCistella[i + 1];
+                        productesCistella[i + 1] = temp;
+
+                        //qTemp (quantitat temporal)
+
+                        int qTemp = quantitat[i];
+                        quantitat[i] = quantitat[i + 1];
+                        quantitat[i + 1] = qTemp;
+
+                        canvis = true;
+
+
+                    }
+                }
+            }
         }
 
     }
