@@ -1,5 +1,6 @@
 ﻿using System.Security.Authentication.ExtendedProtection;
 using System.Security.Cryptography;
+using System.Xml;
 
 namespace botiga_cistella
 {
@@ -40,26 +41,22 @@ namespace botiga_cistella
             quantitat[1] = 1;
             quantitat[2] = 3;
 
-
             int nElemCistella = 3;
             double diners = 20.00;
 
+            string tiquet;
+
             //variables i taules de cistella
+
+
 
             //info: Hem de tenir en compte que per a cada producte tindrem la seva quantitat, per tant quan inserim un
             //producte hem d’inserir una quantitat i actualitzar nElements, no podrem posar un producte a la cistella si no
             //tenim suficient diners.
 
+            tiquet = toString(productesCistella, quantitat, preusProductes, preuFinal, nElemCistella);
 
-
-
-            ordenarCistella(ref productesCistella, ref quantitat, nElemCistella);
-
-            for(int i = 0;i < nElemCistella; i++)
-            {
-                Console.WriteLine(productesCistella[i] + " ");
-            }
-
+            Console.WriteLine(tiquet);
 
         }
 
@@ -215,5 +212,30 @@ namespace botiga_cistella
             }
         }
 
-    }
+        static void mostrar(string[] productesCistella, int[] quantitat, double[] preusProductes, double preuFinal, int nElemCistella)
+        {
+            for (int i = 0; i < nElemCistella; i++)
+            {
+                Console.WriteLine("Producte: " + productesCistella[i] + " Quantitat: " + quantitat[i] + " Preu Unitat " + preusProductes[i]);
+
+            }
+
+            Console.WriteLine("Preu Final: " + preuFinal);
+        }
+
+        static string toString(string[] productesCistella, int[] quantitat, double[] preusProductes, double preuFinal, int nElemCistella)
+        {
+            string tiquet = "";
+
+            for (int i = 0; i < nElemCistella; i++)
+            {
+                tiquet =tiquet + "Producte: " + productesCistella[i] + " Quantitat: " + quantitat[i] + " Preu Unitat " + preusProductes[i] + '\n';
+            }
+
+            tiquet = tiquet + '\n' + "Preu Final: " + preuFinal;
+
+            return tiquet;
+        }
+    }  
+         
 }
