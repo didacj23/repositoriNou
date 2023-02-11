@@ -86,7 +86,7 @@ namespace botiga_cistella
                                 AfegirProducte(ref productesBotiga, ref preusProductes, nElemBotiga, producte, preuUsuari);
 
                             }
-
+                            
                         }
                         else
                         {
