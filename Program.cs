@@ -91,11 +91,15 @@ namespace botiga_cistella
                                   "6. Ordenar preus\n" +
                                   "7. Mostrar botiga\n" +
                                   "8. ToString botiga\n" +
-                                  "9. Sortir");
+                                  "9. Comprar producte"+
+                                  "10. Ordenar cistella"+
+                                  "11. Mostrar cistella"+
+                                  "12. To string cistella"+
+                                  "13. Sortir");
 
                 Console.Write("Escriu una opcio: ");
                 opcio = Convert.ToInt32(Console.ReadLine());
-            } while (opcio > 9 || opcio < 1);
+            } while (opcio > 13 || opcio < 1);
 
         }
 
@@ -204,7 +208,22 @@ namespace botiga_cistella
                         break;
                     }
 
-                case 9: //SORTIR
+                case 9:
+                    comprar(productesBotiga, ref quantitat, nElementsCistella, ref  diners, preusProductes,  producte,  nElemBotiga, ref  pTrobat, ref  posicioProdute, ref  preuFinal, ref productesCistella);
+                    break;
+
+                case 10:
+                    ordenarCistella(ref productesCistella, ref quantitat,  nElemCistella);
+                    break;
+
+                case 11:
+                    mostrar(productesCistella, quantitat, preusProductes,  preuFinal,  nElemCistella);
+                    break;
+                case 12:
+                    toString(productesCistella, quantitat, preusProductes,  preuFinal,  nElemCistella);
+                    break;
+
+                case 13: //SORTIR
                     {
                         Environment.Exit(0);
                         break;
@@ -213,26 +232,7 @@ namespace botiga_cistella
             }
         }
 
-        static void MostrarMenuCistella()
-        {
-            int opcio = 0;
-
-            Console.Clear();
-
-            do
-            {
-                Console.WriteLine("CISTELLA");
-
-                Console.WriteLine("1. Comprar producte" +
-                                  "2. Ordenar cistella\n" +
-                                  "3. Mostra\n" +
-                                  "4. ToString\n");
-
-                Console.Write("Escriu una opcio: ");
-                opcio = Convert.ToInt32(Console.ReadLine());
-            } while (opcio > 6 || opcio < 1);
-
-        }
+        
 
         static string DemanarProducte(string producte, int numProducte)
         {
@@ -412,7 +412,7 @@ namespace botiga_cistella
 
             return tiquet;
         }
-    }  
+      
          
 =======
         static double IntroduirPreuValid()
