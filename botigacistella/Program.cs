@@ -27,7 +27,7 @@ namespace botiga_cistella
 
 
             MostrarMenuBotiga(ref opcio);
-            DetectaOpcio(opcio, nElemBotiga, ref productesBotiga, ref preusProductes);
+            DetectaOpcio(opcio, nElemBotiga, ref productesBotiga, ref preusProductes);          
 
         }
 
@@ -37,7 +37,7 @@ namespace botiga_cistella
             {
                 Console.Clear();
 
-                Console.WriteLine("BOTIGA");
+                Console.WriteLine("BOTIGA - CISTELLA");
 
                 Console.WriteLine("1. Afegir producte\n" +
                                   "2. Ampliar tenda\n" +
@@ -162,7 +162,7 @@ namespace botiga_cistella
 
                 case 9: //SORTIR
                     {
-                        Sortir();
+                        Environment.Exit(0);
                         break;
                     }
 
@@ -237,54 +237,6 @@ namespace botiga_cistella
             preusProductes[nElemBotiga] = preu;
 
             nElemBotiga++;
-
-            {/*string producte="";
-            //producte=DemanarProducte(producte);
-
-            if (ExistirProducte(producte, productesBotiga, nElemBotiga))
-            //si el producte existeix, demana'l fins que usuari introdueixi un que no existeix
-            {
-                do
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine("El producte ja existeix");
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.Write("Introdueix el nou nom del producte: ");
-                    producte = Console.ReadLine();
-                } while (ExistirProducte(producte, productesBotiga, nElemBotiga));
-            }
-            */
-            }
-
-            {/*
-            double preu = 0;
-            int i;
-            bool SDI = true; //Semafor de dades incorrectes
-            bool  cPreu = true; //comprovacio Preu (cPreu)
-
-            while (SDI && cPreu)
-            {
-                try
-                {
-                    Console.WriteLine("Introdueix el preu del producte: ");
-                    string ComprovacioPreu = Console.ReadLine();
-                    preu = double.Parse(ComprovacioPreu);
-                }
-                catch
-                {
-
-                    preu = -1;
-                }
-
-                if (preu > -1)
-                {
-                    SDI = false;
-                    cPreu = false;
-                }
-             
-            }
-            */
-            }
 
         }
 
@@ -419,33 +371,6 @@ namespace botiga_cistella
             Console.WriteLine($"Espai restant lliure a la botiga: {productesBotiga.Length - nElemBotiga}");
         }
 
-        private static void Sortir()
-        {
-            char confirmacio_sortir = 'n';
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n" +
-                              " ******************************************************************\n" +
-                              " *                                                                *\n" +
-                              " *              *                                                 *\n" +
-                              " *             * *                                                *\n" +
-                              " *            *   *                                               *\n" +
-                              " *           *     *                                              *\n" +
-                              " *          *    |  *                    ATENCIÓ!                 *\n" +
-                              " *         *     |   *       ESTÀS SEGUR QUE VOLS SORTIR ?        *\n" +
-                              " *        *      |    *                                           *\n" +
-                              " *       *             *                                          *\n" +
-                              " *      *        O      *                                         *\n" +
-                              " *     *                 *                                        *\n" +
-                              " *    * * * * * * * * * * *                                       *\n" +
-                              " *                                                                *\n" +
-                              " ******************************************************************\n");
-            Console.Write(" (s/n): ");
-            confirmacio_sortir = Console.ReadKey().KeyChar;
-
-            if (confirmacio_sortir == 's') Environment.Exit(0);
-
-        }
     }
 
 }
